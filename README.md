@@ -1,1 +1,1 @@
-# Selenium_Junit_Google-Image-Search
+# Selenium_Junit
