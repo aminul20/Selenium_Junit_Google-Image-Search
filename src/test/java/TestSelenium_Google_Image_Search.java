@@ -23,12 +23,12 @@ public class TestSelenium_Google_Image_Search {
 //        ops.addArguments("--headless");//run test without opening browser
         ops.addArguments("--headed");
         driver=new FirefoxDriver(ops);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
-    public void searchImageOnGoogle(){
+    public void searchImageOnGoogle() throws InterruptedException {
         driver.get("https://www.google.com/ncr");
         driver.findElement(By.xpath("//a[contains(text(),'Images')]")).click();
         driver.findElement(By.xpath("//div[@class='ZaFQO']")).click();
@@ -40,13 +40,14 @@ public class TestSelenium_Google_Image_Search {
         driver.findElement(By.name("encoded_image")).sendKeys(file.getAbsolutePath());
 //        System.out.println(file.getAbsolutePath()); //show absolute path of file in console
 
+//        Thread.sleep(5000);
         Boolean status = driver.findElement(By.xpath("//img[@class='GMzDwb']")).isDisplayed();
         Assert.assertEquals(status,true);
     }
 
     @After
     public void finishTest(){
-//        driver.close();
+        driver.close();
     }
 }
 
